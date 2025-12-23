@@ -6,7 +6,21 @@ import Visualizer from "../components/Visualizer";
 import { clsx } from "clsx";
 import { createClient, LiveTranscriptionEvents, LiveClient } from "@deepgram/sdk";
 
-const FILLER_WORDS = ["uh", "um", "ah", "er", "hm", "hmm", "oh", "like", "you know"];
+// Deepgram's standardized fillers + common disfluencies
+// Note: We exclude context-dependent fillers like "like", "you know", "oh" to avoid false positives
+const FILLER_WORDS = [
+  "uh",
+  "um",
+  "ah",
+  "er",
+  "hm",
+  "hmm",
+  "mhmm",
+  "mm-mm",
+  "uh-uh",
+  "uh-huh",
+  "nuh-uh"
+];
 
 export default function Home() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -126,11 +140,8 @@ export default function Home() {
       const deepgram = createClient(key);
       
       const connection = deepgram.listen.live({
-        model: "nova-2",
+        model: "nova-3",
         filler_words: true,
-        punctuate: true,
-        smart_format: true,
-        language: "en",
       });
 
       connectionRef.current = connection;
@@ -156,7 +167,9 @@ export default function Home() {
           }
           
           const count = words.filter((w: { word: string }) => {
-            const cleanWord = w.word.toLowerCase().replace(/[^a-z]/g, '');
+            // detailed word info usually doesn't have punctuation in 'word' field, 
+            // but we normalize just in case, preserving hyphens for words like 'uh-huh'
+            const cleanWord = w.word.toLowerCase().trim().replace(/[.,?!]$/, '');
             return FILLER_WORDS.includes(cleanWord);
           }).length;
           
@@ -167,7 +180,7 @@ export default function Home() {
       });
 
       // Handle metadata
-      connection.on(LiveTranscriptionEvents.Metadata, (data) => {
+      connection.on(LiveTranscriptionEvents.Metadata, (_data) => {
       });
 
       // Handle connection close
