@@ -23,8 +23,10 @@ export default function Visualizer({ stream, isRecording }: VisualizerProps) {
 
     // Initialize Audio Context
     if (!audioContextRef.current) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
     }
+
     const audioCtx = audioContextRef.current;
 
     // Create Analyser

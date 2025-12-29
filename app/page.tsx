@@ -8,6 +8,17 @@ const manrope = Manrope({ subsets: ["latin"], display: "swap" });
 
 const tools = [
   {
+    id: "prompt-enhancer",
+    name: "Prompt Enhancer",
+    description: "Refine prompts into clear, structured requests with tone and constraint guidance.",
+    tags: ["Writing", "Clarity", "AI"],
+    href: "/tools/prompt-enhancer",
+    icon: Wand2,
+    accent: "from-amber-400 via-orange-500 to-rose-500",
+    status: "Beta",
+    previewKind: "chat",
+  },
+  {
     id: "filler-word-counter",
     name: "Filler Word Counter",
     description: "Real-time detection of verbal fillers with instant feedback and session timing.",
@@ -18,6 +29,7 @@ const tools = [
     status: "Ready",
     previewSrc: "/filler-word-counter.png",
     previewAlt: "Filler Word Counter preview",
+    previewKind: "image",
   },
 ];
 
@@ -126,14 +138,38 @@ export default function Home() {
                   <div className="relative overflow-hidden rounded-xl border border-white/60 bg-white/70 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.6)] transition-transform duration-200 ease-out group-hover:scale-[1.01]">
                     <div className="absolute inset-0 bg-gradient-to-br from-white/70 via-white/20 to-transparent" />
                     <div className="relative aspect-[16/10] p-2">
-                      <Image
-                        src={tool.previewSrc}
-                        alt={tool.previewAlt}
-                        fill
-                        sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 100vw"
-                        className="object-contain"
-                        priority
-                      />
+                      {tool.previewKind === "image" && tool.previewSrc ? (
+                        <Image
+                          src={tool.previewSrc}
+                          alt={tool.previewAlt || `${tool.name} preview`}
+                          fill
+                          sizes="(min-width: 1024px) 28vw, (min-width: 768px) 40vw, 100vw"
+                          className="object-contain"
+                          priority
+                        />
+                      ) : (
+                        <div className="flex h-full flex-col rounded-lg border border-white/70 bg-white/80 p-3 text-[10px] text-slate-500 shadow-[inset_0_0_8px_rgba(15,23,42,0.05)]">
+                          <div className="flex items-center justify-between text-[9px] font-semibold uppercase tracking-[0.2em] text-slate-400">
+                            <span>Prompt Enhancer</span>
+                            <span className="rounded-full border border-white/70 bg-white/80 px-2 py-0.5 text-[9px] text-slate-400">
+                              Draft
+                            </span>
+                          </div>
+                          <div className="mt-3 flex flex-col gap-2">
+                            <div className="w-fit rounded-lg bg-white/90 px-2.5 py-1 shadow-sm">
+                              Rewrite this prompt...
+                            </div>
+                            <div className="w-fit max-w-[80%] self-end rounded-lg bg-slate-900/90 px-2.5 py-1 text-white shadow-sm">
+                              Add structure + constraints
+                            </div>
+                          </div>
+                          <div className="mt-auto flex items-center gap-2 rounded-full border border-white/70 bg-white/80 px-2 py-1">
+                            <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
+                            <span className="h-2 flex-1 rounded-full bg-slate-100" />
+                            <span className="h-5 w-5 rounded-full bg-slate-900/90" />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
 
