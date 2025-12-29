@@ -11,6 +11,14 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Filler Word Counter",
   description: "Practice speaking with real-time filler word detection",
+  icons: {
+    icon: [
+      { url: "/voice-insights-icon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/voice-insights-icon-32.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/voice-insights-icon-32.png",
+    apple: "/voice-insights-icon-180.png",
+  },
 };
 
 export default function RootLayout({
