@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { Suspense, useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import clsx from "clsx";
@@ -24,7 +24,7 @@ const FILLER_WORDS = [
   "like",
 ];
 
-export default function FillerWordCounterPage() {
+function FillerWordCounterContent() {
   const searchParams = useSearchParams();
   const shouldAutostart = searchParams.get("autostart") === "1";
 
@@ -341,5 +341,13 @@ export default function FillerWordCounterPage() {
         )}
       </div>
     </main>
+  );
+}
+
+export default function FillerWordCounterPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white" />}>
+      <FillerWordCounterContent />
+    </Suspense>
   );
 }
