@@ -126,7 +126,7 @@ export default function PromptEnhancerPage() {
               </Link>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-400">
-                  Voice Insights
+                  Communication Studio
                 </p>
                 <h1 className={`${fraunces.className} text-xl font-semibold text-slate-900`}>
                   Prompt Enhancer

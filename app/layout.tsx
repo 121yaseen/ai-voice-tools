@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Filler Word Counter",
-  description: "Practice speaking with real-time filler word detection",
+  title: "Communication Studio",
+  description: "A suite of tools to refine your speaking and writing.",
   icons: {
     icon: [
       { url: "/voice-insights-icon-16.png", sizes: "16x16", type: "image/png" },

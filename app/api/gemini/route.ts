@@ -11,19 +11,27 @@ export async function POST(req: Request) {
 
   const { messages } = await req.json();
 
+  interface MessagePart {
+    type: string;
+    text: string;
+  }
 
+  interface Message {
+    role: "user" | "assistant" | "system";
+    parts: MessagePart[];
+  }
 
   // Convert UIMessages (with parts) to CoreMessages (with content) for the model
 
-  const coreMessages = messages.map((m: any) => ({
+  const coreMessages = messages.map((m: Message) => ({
 
     role: m.role,
 
     content: m.parts
 
-      .filter((p: any) => p.type === 'text')
+      .filter((p: MessagePart) => p.type === 'text')
 
-      .map((p: any) => p.text)
+      .map((p: MessagePart) => p.text)
 
       .join('\n'),
 

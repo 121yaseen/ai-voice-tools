@@ -236,7 +236,7 @@ function FillerWordCounterContent() {
             href="/"
             className="text-xl font-bold tracking-tight bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent"
           >
-            VoiceInsights
+            Communication Studio
           </Link>
         </div>
         <button

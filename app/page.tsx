@@ -74,16 +74,16 @@ export default function Home() {
             <div className="flex flex-col gap-6">
               <div className="inline-flex w-fit items-center gap-3 rounded-full border border-white/60 bg-white/50 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.35em] text-slate-500 shadow-sm backdrop-blur">
                 <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.7)] ring-2 ring-white/70" />
-                Voice Insights
+                Communication Studio
               </div>
               <h1
                 className={`${fraunces.className} text-balance text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl`}
               >
-                A glass-smooth studio of voice tools, shaped to refine how you speak.
+                A glass-smooth studio of tools, shaped to refine how you speak and write.
               </h1>
               <p className="max-w-2xl text-pretty text-base text-slate-600 md:text-lg">
-                Each tool focuses on one coaching signal. Tap a card to launch a session instantly and keep
-                your delivery crisp.
+                Each tool focuses on a specific communication skill. Tap a card to launch a session instantly and
+                sharpen your delivery.
               </p>
             </div>
             <div className="w-full md:w-[340px]">
@@ -95,7 +95,7 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="mt-4 text-2xl font-semibold text-slate-900">
-                  1 live · 3 in build
+                  2 live · 3 in build
                 </div>
                 <p className="mt-2 text-xs text-slate-500">
                   Launch tools in a single tap and stay in flow.
@@ -205,7 +205,7 @@ export default function Home() {
                   More tools coming soon
                 </h2>
                 <p className="text-sm text-slate-600 line-clamp-3">
-                  We are building a full suite of speaking insights. Upcoming tools will launch right here.
+                  We are building a full suite of communication insights. Upcoming tools for voice and text will launch right here.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
